@@ -16,18 +16,18 @@ Como executar
 ```bash
 python app.py
 ```
+ou adicione --grant para ver mais detalhes sobre a execução do algoritmo
+
+```bash
+python app.py --grant
+```
 
 Opções CLI
 
 ```bash
 # rodar exemplo padrão
-python app.py
+python app.py --bash
 
-# rodar a partir de um arquivo JSON
-python app.py --input processos.json
-
-# rodar a partir de um CSV e imprimir Gantt
-python app.py --input processos.csv --gantt
 
 # mudar o quantum
 python app.py --quantum 3
