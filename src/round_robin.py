@@ -104,26 +104,8 @@ class RoundRobinScheduler:
         return ordem_execucao, respostas, media_resposta, self.processos
 
 
-def default_example() -> List[Process]:
-    dados = [
-        {"nome": "P1", "chegada": 0, "execucao": 5},
-        {"nome": "P2", "chegada": 1, "execucao": 3},
-        {"nome": "P3", "chegada": 2, "execucao": 6},
-        {"nome": "P4", "chegada": 3, "execucao": 3},
-        {"nome": "P5", "chegada": 4, "execucao": 2},
-        {"nome": "P6", "chegada": 5, "execucao": 7},
-    ]
-    return [Process(**d) for d in dados]
-
-
-
-
-
 def simulate_from_dicts(processos_dicts, quantum: int = 2, return_timeline: bool = False):
     """
-    Wrapper que aceita uma lista de dicionários no formato sugerido na dica:
-    [{"nome": "P1", "chegada": 0, "execucao": 5}, ...]
-
     Retorna: ordem_execucao, respostas, media_resposta, lista_de_processos
     """
     processos = [Process(nome=d["nome"], chegada=d["chegada"], execucao=d["execucao"]) for d in processos_dicts]
