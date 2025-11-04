@@ -49,9 +49,12 @@ def main():
         processos = parse_input_file(args.input)
     else:
         processos = [
-            {"nome": "P1", "chegada": 0, "execucao": 5},
-            {"nome": "P2", "chegada": 1, "execucao": 3},
-            {"nome": "P3", "chegada": 2, "execucao": 6},
+        {"nome": "P1", "chegada": 0, "execucao": 5},
+        {"nome": "P2", "chegada": 1, "execucao": 3},
+        {"nome": "P3", "chegada": 2, "execucao": 6},
+        {"nome": "P4", "chegada": 3, "execucao": 3},
+        {"nome": "P5", "chegada": 4, "execucao": 2},
+        {"nome": "P6", "chegada": 5, "execucao": 7},
         ]
 
     ret = simulate_from_dicts(processos, quantum=args.quantum, return_timeline=True)

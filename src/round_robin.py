@@ -31,7 +31,7 @@ class RoundRobinScheduler:
         self.processos = sorted(processos, key=lambda p: p.chegada)
         self.quantum = quantum
 
-    def simulate(self, return_timeline: bool = False) -> Tuple[List[str], Dict[str, int], float, List[Process]]:
+    def simulate(self, return_timeline: bool = True) -> Tuple[List[str], Dict[str, int], float, List[Process]]:
         """Executa a simulação do algoritmo Round Robin.
 
         Se return_timeline for True, a função também retorna um registro por unidade de tempo
@@ -97,7 +97,7 @@ class RoundRobinScheduler:
                 respostas[p.nome] = resp
                 soma_resposta += resp
 
-        media_resposta = soma_resposta / total_processos if total_processos else 0.0
+        media_resposta = soma_resposta / total_processos 
 
         if return_timeline:
             return ordem_execucao, respostas, media_resposta, self.processos, timeline
@@ -109,30 +109,14 @@ def default_example() -> List[Process]:
         {"nome": "P1", "chegada": 0, "execucao": 5},
         {"nome": "P2", "chegada": 1, "execucao": 3},
         {"nome": "P3", "chegada": 2, "execucao": 6},
+        {"nome": "P4", "chegada": 3, "execucao": 3},
+        {"nome": "P5", "chegada": 4, "execucao": 2},
+        {"nome": "P6", "chegada": 5, "execucao": 7},
     ]
     return [Process(**d) for d in dados]
 
 
-def main():
-    processos = default_example()
-    scheduler = RoundRobinScheduler(processos, quantum=2)
-    ordem, respostas, media, processos_result = scheduler.simulate()
 
-    print("\nSimulação Round Robin (quantum=2)")
-    print("Ordem de execução:")
-    print(' -> '.join(ordem))
-
-    print("\nTempos por processo:")
-    for p in processos_result:
-        print(f"{p.nome}: chegada={p.chegada}, inicio={p.inicio}, termino={p.termino}, resposta={respostas[p.nome]}")
-
-    print(f"\nTempo médio de resposta: {media:.2f}")
-
-    print("\nComparação com simuladores externos: forneça os valores do simulador LotusOregano para comparação.")
-
-
-if __name__ == '__main__':
-    main()
 
 
 def simulate_from_dicts(processos_dicts, quantum: int = 2, return_timeline: bool = False):
